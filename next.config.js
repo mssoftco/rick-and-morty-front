@@ -2,9 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: { domains: ['rickandmortyapi.com'] },
   distDir: 'build',
-  images: { unoptimized: true },
-  ...{ ...(process.env.NODE_ENV === 'production' ? { assetPrefix: '/rick-and-morty-front/' } : {}) }
+  // gitlab-ci
+  ...{ ...(process.env.NODE_ENV === 'production' ? { assetPrefix: '/rick-and-morty-front/', images: { unoptimized: true } } : {}) }
 };
 
 module.exports = nextConfig;

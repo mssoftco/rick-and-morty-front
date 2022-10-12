@@ -19,7 +19,10 @@
       "@/components/*": ["components/*"],
       "@/services/*": ["services/*"],
       "@/types/*": ["types/*"],
-      "@/styles/*": ["styles/*"],
+      "@/constants/*": ["constants/*"],
+      "@/utils/*": ["utils/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

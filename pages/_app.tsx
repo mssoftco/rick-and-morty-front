@@ -1,8 +1,15 @@
 import type { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider as StateProvider } from 'jotai';
+import { getLayout } from '@/utils/layout';
 import Head from 'next/head';
-import '../styles/globals.css';
+import '@/styles/globals.css';
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const Layout = getLayout<any>(Component);
+
   return (
     <>
       <Head>
@@ -11,8 +18,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='description' content='Rick and Morty' />
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
       </Head>
-  <Component {...pageProps} />
-      </>
+      <StateProvider>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
+      </StateProvider>
+    </>
   );
 }
 
