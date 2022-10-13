@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import Character from '@/services/character';
 import { CharactersWithPaginationType, CharacterType } from '@/types/character';
 
-export function useCharactersByPage(page?: number) {
-  const pageNumber = page ? page : 1;
+export function useCharactersByPage(pageNumber: number) {
   const queryString: string = `?page=${pageNumber}`;
-  return useQuery<CharactersWithPaginationType>(['characters', queryString], () => Character.get(queryString));
+  return useQuery<CharactersWithPaginationType>(['characters', queryString], () => Character.get(queryString), {
+    enabled: !!pageNumber && pageNumber > 0
+  });
 }
 
 export function useCharacterById(id: number) {

@@ -1,14 +1,25 @@
 import React from 'react';
-import { Card } from '@/components/features/Location';
 import { LocationType } from '@/types/location';
+import { CardText, ContainerList } from '@/components/features/shared';
+import Link from '@/components/Link';
+import { routes } from '@/constants/defaults';
 
 function List({ data }: { data: LocationType[] | undefined }) {
   return (
-    <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
-      {data?.map(location => (
-        <Card {...location} key={location?.id} />
-      ))}
-    </div>
+    <ContainerList>
+      <>
+        {data?.map(({ id, type, name }) => (
+          <CardText key={id} subtitle={type}>
+            <Link href={`${routes.LOCATIONS}/${id}`}>
+              <a className={'hover:text-gray-400'}>
+                <span aria-hidden='true' className='absolute inset-0' />
+                {name}
+              </a>
+            </Link>
+          </CardText>
+        ))}
+      </>
+    </ContainerList>
   );
 }
 

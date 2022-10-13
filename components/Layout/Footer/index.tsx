@@ -9,7 +9,8 @@ function Footer() {
             Rick and Morty API
           </a>
           <p className='text-base text-gray-400'>
-            &copy; 2022<span className={'hidden sm:inline-block'}>, All rights reserved.</span>
+            &copy; {new Date().getFullYear()}
+            <span className={'hidden sm:inline-block'}>, All rights reserved.</span>
           </p>
         </div>
       </div>

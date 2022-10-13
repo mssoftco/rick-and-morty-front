@@ -20,10 +20,10 @@ function Header() {
               </a>
             </Link>
             <Link href={routes.CHARACTERS}>
-              <a className='ml-3 sm:ml-10 text-base sm:text-xl font-medium text-gray-200 hover:text-white'>Characters</a>
+              <a className='ml-3 sm:ml-10 text-base sm:text-xl font-base text-gray-200 hover:text-white'>Characters</a>
             </Link>
             <Link href={routes.LOCATIONS}>
-              <a className='ml-3 sm:ml-6 text-base sm:text-xl font-medium text-gray-200 hover:text-white'>Locations</a>
+              <a className='hidden sm:inline-block ml-3 sm:ml-6 text-base sm:text-xl font-base text-gray-200 hover:text-white'>Locations</a>
             </Link>
           </nav>
           <div className='flex items-center md:ml-12'>

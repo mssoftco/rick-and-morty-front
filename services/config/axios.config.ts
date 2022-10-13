@@ -4,7 +4,7 @@ import { onSuccess, onError } from '@/services/config/requestHandler';
 
 const instance = axios.create({ baseURL: BASE_URL });
 instance.defaults.headers.post['Content-Type'] = 'application/json';
-instance.defaults.withCredentials = true;
+//instance.defaults.withCredentials = true;
 
 const request = async ({ ...options }: AxiosRequestConfig) => {
   return instance(options).then(onSuccess).catch(onError);

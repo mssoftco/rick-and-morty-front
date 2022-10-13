@@ -6,6 +6,8 @@ import { getLocationId } from '@/utils/common';
 import { routes } from '@/constants/defaults';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import { useFavoriteCharacter } from '@/hooks/cookie';
+import { FieldDetails } from '@/components/features/shared';
+import TitleDetails from '@/components/features/shared/TitleDetails';
 
 function Details({ data }: { data: CharacterType | undefined }) {
   const { image, gender, status, species, name, origin, location } = data || {};
@@ -25,36 +27,20 @@ function Details({ data }: { data: CharacterType | undefined }) {
 
   return (
     <div className={'md:grid md:grid-cols-2 md:grid-rows-1 md:gap-8'}>
-      {/* details */}
       <div className='lg:max-w-lg'>
-        <div className='flex items-center mt-4 mb-4 md:mb-10'>
-          <h1 className='text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl'>{name}</h1>
+        <TitleDetails title={name}>
           <HeartIcon
             onClick={() => handleFavoriteCharacter(name)}
             className={'w-10 h-10 ml-3 text-gray-200 hover:text-yellow-400 hover:cursor-pointer'}
           />
-        </div>
+        </TitleDetails>
+
         <section aria-labelledby='information-heading' className='mt-4'>
-          <div className='flex items-center mt-2'>
-            <p className='text-md text-gray-500 sm:text-lg mr-2'>Status:</p>
-            <p className='text-md text-gray-800 sm:text-lg'>{status}</p>
-          </div>
-          <div className='flex items-center mt-2'>
-            <p className='text-md text-gray-500 sm:text-lg mr-2'>Gender:</p>
-            <p className='text-md text-gray-800 sm:text-lg'>{gender}</p>
-          </div>
-          <div className='flex items-center mt-2'>
-            <p className='text-md text-gray-500 sm:text-lg mr-2'>Species:</p>
-            <p className='text-md text-gray-800 sm:text-lg'>{species}</p>
-          </div>
-          <div className='flex items-center mt-2'>
-            <p className='text-md text-gray-500 sm:text-lg mr-2'>Origin Location:</p>
-            {renderLocationValue(origin)}
-          </div>
-          <div className='flex items-center mt-2 mb-4'>
-            <p className='text-md text-gray-500 sm:text-lg mr-2'>Last Location:</p>
-            {renderLocationValue(location)}
-          </div>
+          <FieldDetails label={'Status:'} value={status} />
+          <FieldDetails label={'Gender:'} value={gender} />
+          <FieldDetails label={'Species:'} value={species} />
+          <FieldDetails label={'Origin Location:'}>{renderLocationValue(origin)}</FieldDetails>
+          <FieldDetails label={'Last Location:'}>{renderLocationValue(location)}</FieldDetails>
         </section>
       </div>
       {/* image */}

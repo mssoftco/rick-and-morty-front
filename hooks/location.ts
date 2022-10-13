@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import Location from '@/services/location';
 import { LocationType, LocationsWithPaginationType } from '@/types/location';
 
-export function useLocationsByPage(page?: number) {
-  const pageNumber = page ? page : 1;
+export function useLocationsByPage(pageNumber: number) {
   const queryString: string = `?page=${pageNumber}`;
-  return useQuery<LocationsWithPaginationType>(['locations', queryString], () => Location.get(queryString));
+  return useQuery<LocationsWithPaginationType>(['locations', queryString], () => Location.get(queryString), {
+    enabled: !!pageNumber && pageNumber > 0
+  });
 }
 
 export function useLocationById(id: number) {

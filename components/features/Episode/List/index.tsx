@@ -1,14 +1,17 @@
 import React from 'react';
-import { Card } from '@/components/features/Episode';
+import { CardText } from '@/components/features/shared';
 import { EpisodeType } from '@/types/episode';
+import { ContainerList } from '@/components/features/shared';
 
 function List({ data }: { data: EpisodeType[] | undefined }) {
   return (
-    <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-4 xl:gap-x-8'>
-      {data?.map(location => (
-        <Card {...location} key={location?.id} />
-      ))}
-    </div>
+    <ContainerList>
+      <>
+        {data?.map(({ id, name, episode }) => (
+          <CardText key={id} title={name} subtitle={episode} />
+        ))}
+      </>
+    </ContainerList>
   );
 }
 
