@@ -9,6 +9,12 @@ export type LocationType = {
   url: string;
   created: string;
 };
+
+export type LocationFilterType = {
+  page?: number;
+  name?: string;
+};
+
 export type LocationsWithPaginationType = {
   info: PaginationInfoType;
   results: LocationType[];

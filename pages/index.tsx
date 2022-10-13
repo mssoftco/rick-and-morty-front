@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import Link from '@/components/Link';
+import Link from '@/components/elements/Link';
 import { routes } from '@/constants/defaults';
 
 function HomePage() {

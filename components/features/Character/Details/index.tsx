@@ -1,7 +1,7 @@
 import React from 'react';
 import { CharacterType, LocationShortType } from '@/types/character';
 import Image from 'next/image';
-import Link from '@/components/Link';
+import Link from '@/components/elements/Link';
 import { getLocationId } from '@/utils/common';
 import { routes } from '@/constants/defaults';
 import { HeartIcon } from '@heroicons/react/24/solid';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from '@/components/Link';
+import Link from '@/components/elements/Link';
 import { CharacterType } from '@/types/character';
 import { routes } from '@/constants/defaults';
 

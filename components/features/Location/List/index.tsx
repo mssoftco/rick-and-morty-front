@@ -1,7 +1,7 @@
 import React from 'react';
 import { LocationType } from '@/types/location';
 import { CardText, ContainerList } from '@/components/features/shared';
-import Link from '@/components/Link';
+import Link from '@/components/elements/Link';
 import { routes } from '@/constants/defaults';
 
 function List({ data }: { data: LocationType[] | undefined }) {

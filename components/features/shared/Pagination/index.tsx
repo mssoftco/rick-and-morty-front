@@ -1,6 +1,6 @@
 import React from 'react';
 import { PaginationInfoType } from '@/types/common';
-import Button from '@/components/Button';
+import Button from '@/components/elements/Button';
 
 type PaginationType = {
   info: PaginationInfoType;

@@ -9,3 +9,14 @@ export function getLocationId(urlLocation: string | undefined) {
 export function getCharactersIds(characters: string[] | undefined) {
   return characters?.map(urlCharacter => +urlCharacter?.split('/character/')[1]);
 }
+
+export function objectToQueryString(obj: any) {
+  const queryString = [];
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key) && obj[key] !== undefined && obj[key] !== null) {
+      queryString.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
+    }
+  }
+
+  return queryString.join('&');
+}

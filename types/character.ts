@@ -20,6 +20,12 @@ export type LocationShortType = {
   url: string;
 };
 
+export type CharacterFilterType = {
+  page?: number;
+  name?: string;
+  gender?: string; //'female'|'male'|'genderless'|'unknown'
+};
+
 export type CharactersWithPaginationType = {
   info: PaginationInfoType;
   results: CharacterType[];
