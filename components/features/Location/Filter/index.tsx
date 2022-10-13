@@ -1,22 +1,22 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';
-import { LocationFilterType } from '@/types/location';
+import InputText from '@/components/elements/InputText';
+import { debouncing, getQueryWithName } from '@/utils/common';
 
 function Filter() {
   const router = useRouter();
 
   const handleChangeFilterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.value;
-    const query: LocationFilterType = { ...router.query, name };
-    delete query.page;
-    if (name === '') delete query.name;
+    const query = getQueryWithName(name, router);
     router.push({ pathname: `${routes.LOCATIONS}`, query }, undefined, { shallow: true }).then();
   };
+  const handleChangeFilterNameWithDelay = debouncing(750, handleChangeFilterName);
 
   return (
     <div className={'flex'}>
-      <input type={'text'} onChange={handleChangeFilterName} placeholder={'Search Name...'} />
+      <InputText className={'my-3 sm:my-0'} onChange={handleChangeFilterNameWithDelay} placeholder={'Search Name...'} />
     </div>
   );
 }

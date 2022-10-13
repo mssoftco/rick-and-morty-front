@@ -5,19 +5,18 @@ import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';
 import { Pagination } from '@/components/features/shared';
+import { getAvailableCharacterQueryParameters, objectToQueryString } from '@/utils/common';
 
 function CharactersPage() {
   const router = useRouter();
-  const page = +(router.query?.page || 1);
-  const name = router.query?.name?.toString();
-  const gender = router.query?.gender?.toString();
-  const { isLoading, data, isSuccess } = useCharactersQuery({ page, name, gender });
+  const { isLoading, isError, data, error, isSuccess } = useCharactersQuery(getAvailableCharacterQueryParameters(router));
+  const errorMessage: string | undefined = error?.toString();
 
-  const handlePagination = (url: string | null) => {
-    if (url) {
-      const pageNumber = url.split('page=')[1];
-      router.push(`${routes.CHARACTERS}?page=${pageNumber}`, undefined, { shallow: true }).then();
-    }
+  const handlePagination = (pageNumber: number | null) => {
+    const query = getAvailableCharacterQueryParameters(router);
+    query.page = pageNumber || 0;
+    const queryString = objectToQueryString(query);
+    if (pageNumber) router.push(`${routes.CHARACTERS}?${queryString}`, undefined, { shallow: true }).then();
   };
 
   return (
@@ -26,9 +25,10 @@ function CharactersPage() {
         <h2 className='text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl'>Character list</h2>
         <Filter />
       </div>
+      {isError && <div>{errorMessage}</div>}
       {isLoading && <div>Loading...</div>}
       {isSuccess && <List data={data?.results} />}
-      {isSuccess && <Pagination info={data?.info} currentPage={page} handlePagination={handlePagination} />}
+      {isSuccess && <Pagination info={data?.info} handlePagination={handlePagination} />}
     </>
   );
 }

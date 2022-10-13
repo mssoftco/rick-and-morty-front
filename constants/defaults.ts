@@ -5,3 +5,22 @@ export const routes = {
   CHARACTERS: '/characters',
   LOCATIONS: '/locations'
 };
+
+export const genderSelectOptions = [
+  {
+    title: 'Male',
+    value: 'male'
+  },
+  {
+    title: 'Female',
+    value: 'female'
+  },
+  {
+    title: 'Genderless',
+    value: 'genderless'
+  },
+  {
+    title: 'Unknown',
+    value: 'unknown'
+  }
+];

@@ -1,23 +1,26 @@
 import React from 'react';
 import { PaginationInfoType } from '@/types/common';
 import Button from '@/components/elements/Button';
+import { getPageNumberOfApiQuery } from '@/utils/common';
 
 type PaginationType = {
   info: PaginationInfoType;
-  currentPage: number;
-  handlePagination: (url: string | null) => void;
+  handlePagination: (url: number | null) => void;
 };
 
-function Pagination({ info, currentPage, handlePagination }: PaginationType) {
-  const maxPageCount = 20;
+function Pagination({ info, handlePagination }: PaginationType) {
+  const limitPageCount = 20;
+  const prevPageNumber = getPageNumberOfApiQuery(info?.prev);
+  const nextPageNumber = getPageNumberOfApiQuery(info?.next);
+  const currentPage = prevPageNumber ? prevPageNumber + 1 : 1;
   const count = info?.count;
-  const from = (currentPage - 1) * maxPageCount + 1;
-  const to = currentPage * maxPageCount > count ? count : currentPage * maxPageCount;
-
+  const from = (currentPage - 1) * limitPageCount + 1;
+  const to = currentPage * limitPageCount > count ? count : currentPage * limitPageCount;
+  console.log({ limitPageCount, prevPageNumber, nextPageNumber, currentPage, count, from, to });
   return (
     <div className='flex w-full mt-8 items-center justify-between border-t border-gray-200 bg-white pt-6'>
       <div className='flex flex-1 justify-between'>
-        <Button variant={'outline'} className={'min-w-[120px]'} onClick={() => handlePagination(info?.prev)} disabled={!info?.prev}>
+        <Button variant={'outline'} className={'min-w-[120px]'} onClick={() => handlePagination(prevPageNumber)} disabled={!prevPageNumber}>
           Previous
         </Button>
         <div className='flex items-center '>
@@ -28,7 +31,7 @@ function Pagination({ info, currentPage, handlePagination }: PaginationType) {
             </p>
           </div>
         </div>
-        <Button variant={'outline'} className={'min-w-[120px]'} onClick={() => handlePagination(info?.next)} disabled={!info?.next}>
+        <Button variant={'outline'} className={'min-w-[120px]'} onClick={() => handlePagination(nextPageNumber)} disabled={!nextPageNumber}>
           Next
         </Button>
       </div>

@@ -11,10 +11,10 @@ export const onError = async (error: any) => {
   switch (error.response?.status) {
     case 401:
     case 403:
-      return Promise.reject(error.response?.data?.errors ? error.response?.data?.errors : error.response?.data);
+      return Promise.reject(error.response?.data?.error ? error.response?.data?.error : error.response?.data);
     case 502:
-      throw new Error(`${error.response?.status} - ${error.response?.data.errors}`);
+      throw new Error(`${error.response?.status} - ${error.response?.data.error}`);
     default:
-      return Promise.reject(error.response?.data?.errors);
+      return Promise.reject(error.response?.data?.error);
   }
 };

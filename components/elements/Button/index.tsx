@@ -2,7 +2,6 @@ import React from 'react';
 
 interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'link' | 'outline' | 'circle' | 'square';
-  innerRef?: React.RefObject<HTMLButtonElement>;
 }
 
 const defaultProps = {
@@ -10,9 +9,9 @@ const defaultProps = {
   type: 'button'
 };
 
-function Button({ className, variant, children, innerRef, ...rest }: IButton) {
+function Button({ className, variant, children, ...props }: IButton) {
   const classes = {
-    base: 'px-4 pt-1.5 pb-2 font-semibold rounded-[5px] transition disabled:cursor-wait border border-gray-900',
+    base: 'px-4 pt-1.5 pb-2 font-semibold rounded-[5px] transition disabled:cursor-auto border border-gray-900',
     primary: 'text-white bg-black hover:bg-gray-700 disabled:bg-gray-600',
     link: 'text-black bg-transparent hover:text-gray-500 disabled:text-gray-300 !border-transparent',
     outline: 'text-gray-700 border border-gray-900 hover:border-gray-600 hover:text-gray-500 disabled:border-gray-300 disabled:text-gray-300',
@@ -21,7 +20,7 @@ function Button({ className, variant, children, innerRef, ...rest }: IButton) {
   };
 
   return (
-    <button className={`  ${classes['base']} ${variant ? classes[variant] : ''} ${className}`} ref={innerRef} {...rest}>
+    <button className={`  ${classes['base']} ${variant ? classes[variant] : ''} ${className}`} {...props}>
       {children}
     </button>
   );
