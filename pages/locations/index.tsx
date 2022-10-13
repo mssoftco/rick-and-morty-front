@@ -1,10 +1,10 @@
 import React from 'react';
 import { List } from '@/components/features/Location';
 import { useLocationsByPage } from '@/hooks/location';
-import Layout from '@/components/Layout';
-import Pagination from '@/components/Pagination';
+import { Pagination } from '@/components/features/shared';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';
+import Layout from '@/components/Layout';
 
 function LocationsPage() {
   const router = useRouter();

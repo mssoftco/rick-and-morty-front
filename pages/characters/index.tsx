@@ -4,7 +4,7 @@ import { useCharactersByPage } from '@/hooks/character';
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';
-import Pagination from '@/components/Pagination';
+import { Pagination } from '@/components/features/shared';
 
 function CharactersPage() {
   const router = useRouter();

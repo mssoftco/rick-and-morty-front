@@ -1,7 +1,6 @@
 import React from 'react';
 import { LocationType } from '@/types/location';
-import TitleDetails from '@/components/features/shared/TitleDetails';
-import { FieldDetails } from '@/components/features/shared';
+import { FieldDetails, TitleDetails } from '@/components/features/shared';
 
 function Details({ data }: { data: LocationType | undefined }) {
   const { name, type, dimension } = data || {};

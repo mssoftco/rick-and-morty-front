@@ -6,8 +6,7 @@ import { getLocationId } from '@/utils/common';
 import { routes } from '@/constants/defaults';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import { useFavoriteCharacter } from '@/hooks/cookie';
-import { FieldDetails } from '@/components/features/shared';
-import TitleDetails from '@/components/features/shared/TitleDetails';
+import { FieldDetails, TitleDetails } from '@/components/features/shared';
 
 function Details({ data }: { data: CharacterType | undefined }) {
   const { image, gender, status, species, name, origin, location } = data || {};
