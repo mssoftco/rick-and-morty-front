@@ -1,6 +1,6 @@
 import React from 'react';
 import { Filter, List } from '@/components/features/Character';
-import { useCharactersQuery } from '@/hooks/character';
+import { useCharactersQuery } from '@/hooks/useCharacterQuery';
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';

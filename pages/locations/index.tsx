@@ -1,6 +1,6 @@
 import React from 'react';
 import { Filter, List } from '@/components/features/Location';
-import { useLocationsQuery } from '@/hooks/location';
+import { useLocationsQuery } from '@/hooks/useLocationQuery';
 import { Pagination } from '@/components/features/shared';
 import { useRouter } from 'next/router';
 import { routes } from '@/constants/defaults';

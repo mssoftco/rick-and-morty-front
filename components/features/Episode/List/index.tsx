@@ -6,11 +6,7 @@ import { ContainerList } from '@/components/features/shared';
 function List({ data }: { data: EpisodeType[] | undefined }) {
   return (
     <ContainerList>
-      <>
-        {data?.map(({ id, name, episode }) => (
-          <CardText key={id} title={name} subtitle={episode} />
-        ))}
-      </>
+      <>{data && data.length > 0 && data?.map(({ id, name, episode }) => <CardText key={id} title={name} subtitle={episode} />)}</>
     </ContainerList>
   );
 }

@@ -5,7 +5,7 @@ import Link from '@/components/elements/Link';
 import { getLocationId } from '@/utils/common';
 import { routes } from '@/constants/defaults';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import { useFavoriteCharacter } from '@/hooks/cookie';
+import { useFavoriteCharacter } from '@/hooks/useCookieFavorite';
 import { FieldDetails, TitleDetails } from '@/components/features/shared';
 
 function Details({ data }: { data: CharacterType | undefined }) {
@@ -45,7 +45,14 @@ function Details({ data }: { data: CharacterType | undefined }) {
       {/* image */}
       <div className='lg:row-span-2'>
         <div className='aspect-w-1 aspect-h-1 rounded-lg overflow-hidden'>
-          <Image layout={'fill'} height={300} width={300} src={image || ''} alt={'name'} className='w-full h-full object-center object-cover' />
+          <Image
+            layout={'fill'}
+            height={'300px'}
+            width={'300px'}
+            src={image || ''}
+            alt={'name'}
+            className='w-full h-full object-center object-cover'
+          />
         </div>
       </div>
     </div>

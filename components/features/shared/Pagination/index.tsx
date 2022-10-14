@@ -10,8 +10,8 @@ type PaginationType = {
 
 function Pagination({ info, handlePagination }: PaginationType) {
   const limitPageCount = 20;
-  const prevPageNumber = getPageNumberOfApiQuery(info?.prev);
-  const nextPageNumber = getPageNumberOfApiQuery(info?.next);
+  const prevPageNumber = +getPageNumberOfApiQuery(info?.prev);
+  const nextPageNumber = +getPageNumberOfApiQuery(info?.next);
   const currentPage = prevPageNumber ? prevPageNumber + 1 : 1;
   const count = info?.count;
   const from = (currentPage - 1) * limitPageCount + 1;

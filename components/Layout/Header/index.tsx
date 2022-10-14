@@ -2,7 +2,7 @@ import React from 'react';
 import Link from '@/components/elements/Link';
 import { routes } from '@/constants/defaults';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
-import { useFavoriteCharacter } from '@/hooks/cookie';
+import { useFavoriteCharacter } from '@/hooks/useCookieFavorite';
 
 function Header() {
   const { favoriteName, removeFavoriteName } = useFavoriteCharacter();

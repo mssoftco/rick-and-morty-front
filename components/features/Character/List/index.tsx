@@ -6,11 +6,7 @@ import { ContainerList } from '@/components/features/shared';
 function List({ data }: { data: CharacterType[] | undefined }) {
   return (
     <ContainerList>
-      <>
-        {data?.map(character => (
-          <Card {...character} key={character?.id} />
-        ))}
-      </>
+      <>{data && data.length > 0 && data?.map(character => <Card {...character} key={character?.id} />)}</>
     </ContainerList>
   );
 }

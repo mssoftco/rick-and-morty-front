@@ -1,9 +1,9 @@
-// success handler
+/* success handler */
 export const onSuccess = (response: any) => {
   return response.data;
 };
 
-// error handler
+/* error handler */
 export const onError = async (error: any) => {
   if (!error?.response) {
     throw new Error(`${error.response?.status} - error - please check internet and try again :(`);
