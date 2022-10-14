@@ -5,7 +5,7 @@ import { getLayout } from '@/utils/layout';
 import Head from 'next/head';
 import '@/styles/globals.css';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 0, refetchOnWindowFocus: false } } });
 
 function MyApp({ Component, pageProps }: AppProps) {
   const Layout = getLayout<any>(Component);

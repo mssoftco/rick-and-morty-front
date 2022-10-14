@@ -16,7 +16,7 @@ function Pagination({ info, handlePagination }: PaginationType) {
   const count = info?.count;
   const from = (currentPage - 1) * limitPageCount + 1;
   const to = currentPage * limitPageCount > count ? count : currentPage * limitPageCount;
-  console.log({ limitPageCount, prevPageNumber, nextPageNumber, currentPage, count, from, to });
+
   return (
     <div className='flex w-full mt-8 items-center justify-between border-t border-gray-200 bg-white pt-6'>
       <div className='flex flex-1 justify-between'>
