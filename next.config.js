@@ -2,9 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  distDir: 'build',
-  images: { unoptimized: true },
-  ...{ ...(process.env.NODE_ENV === 'production' ? { assetPrefix: '/rick-and-morty-front/' } : {}) }
+  images: { domains: ['rickandmortyapi.com'] },
+  distDir: 'build'
 };
 
 module.exports = nextConfig;
