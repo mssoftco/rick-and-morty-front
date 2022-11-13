@@ -24,8 +24,8 @@
 - Display list of locations
 - Display details of character & display list of episodes
 - Display details of location & display list of residents
-- filter characters by name and gender
-- filter locations  by name
+- Filter characters by name and gender
+- Filter locations  by name
 - Save favorite character in cookie storage
 
 <br />
